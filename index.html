@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Splitscreen Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <section id="wrapper" class="skewed">
+   <div class="layer bottom">
+       <div class="content-wrap">
+           <div class="content-body">
+               <h1>Drink Hot</h1>
+               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                   Recusandae est libero voluptas tempora fugiat adipisci velit veritatis
+                   similique totam sequi.</p>
+                   
+           </div>
+           <div class=image>
+           <img src ="hot.jpg" alt="">
+        </div>
+       </div>
+   </div>
+   <div class="layer top">
+        <div class="content-wrap">
+            <div class="content-body">
+                <h1>Stay Cool</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                    Recusandae est libero voluptas tempora fugiat adipisci velit veritatis
+                    similique totam sequi.</p>
+                   
+            </div>
+            <img src ="cool.png" alt="">
+        </div>
+    </div>
+
+    <div class="handle"></div>
+
+   </section>
+
+    <script>
+         
+        document.addEventListener('DOMContentLoaded', start);
+    
+        
+        
+        function start(){
+            let wrapper = document.getElementById('wrapper');
+            let topLayer = wrapper.querySelector('.top');
+            let bottomLayer = wrapper.querySelector('.bottom');
+            let handle = wrapper.querySelector('.handle');
+            let layer = wrapper.querySelector('.layer');
+            
+            let skew = 0;
+            let delta = 0;
+           
+              
+        if(wrapper.className.indexOf('skewed') != -1){
+            skew = 1000;
+        }
+
+        wrapper.addEventListener('mousemove', function(e){
+        
+          delta = (e.clientX - window.innerWidth / 2) * 0.5;
+
+          handle.style.left = e.clientX + delta + 'px';
+
+          topLayer.style.width= e.clientX + skew + delta + 'px';
+
+      
+          
+       
+          });
+    
+           
+    };
+      
+       
+
+    </script>
+</body>
+</html>
